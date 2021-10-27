@@ -17,7 +17,7 @@ import java.util.Properties
 object Main extends App with Base {
   //-----------------------------------------------------------------------------------------------------------1)
   val fileDirSprint2 =
-    "hdfs://quickstart.cloudera/user/hive/warehouse/bdsf2001_adriest.db/enriched_station_information/"
+    "hdfs://quickstart.cloudera/user/hive/warehouse/enriched_station_information/"
 
   val spark = SparkSession
     .builder()
@@ -42,7 +42,7 @@ object Main extends App with Base {
     ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "earliest",
     ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG -> "false")
 
-  val topicName = "bdsf2001_adriest_trip"
+  val topicName = "$$$$_trip"
 
   val inStream: InputDStream[ConsumerRecord[String, String]] =
     KafkaUtils.createDirectStream[String, String](ssc,
@@ -68,7 +68,7 @@ object Main extends App with Base {
       .join(eStationInformationDF, tripDF("start_station_code") === eStationInformationDF("short_name"))
     // ---------------------------------------------------------------------------------------------------------3)
     val srClient = new CachedSchemaRegistryClient("http://localhost:8081", 1)
-    val metadata = srClient.getSchemaMetadata("bdsf2001_adriest_enriched_trip-value", 1)
+    val metadata = srClient.getSchemaMetadata("$$$$$$$$_enriched_trip-value", 1)
     val avroTripSchema = srClient.getByID(metadata.getId)
 
     val props = new Properties()
@@ -100,7 +100,7 @@ object Main extends App with Base {
 
     avroEnrichedTrip
       .foreach(line => {
-        producer.send(new ProducerRecord[String, GenericRecord]("bdsf2001_adriest_enrichedtrip", line))
+        producer.send(new ProducerRecord[String, GenericRecord]("$$$$$$$$$4_enrichedtrip", line))
       })
     producer.flush()
   }
