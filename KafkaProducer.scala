@@ -8,7 +8,7 @@ import scala.io.Source
 
 object KafkaProducer extends Base with App {
 
-  val topicName = "bdsf2001_adriest_trip"
+  val topicName = "$$$$$$_adriest_trip"
 
   val producerProperties = new Properties()
   producerProperties.setProperty(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
@@ -17,7 +17,7 @@ object KafkaProducer extends Base with App {
 
   val producer = new KafkaProducer[String, String](producerProperties)
 
-  val dataSource = "C:/Users/Valeria/BixiData100_Trips/100_trips.csv"
+  val dataSource = "C:/Users/100_trips.csv"
 
   val topicMessage = Source.fromFile(dataSource)
   topicMessage
