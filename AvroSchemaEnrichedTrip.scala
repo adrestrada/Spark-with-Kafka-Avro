@@ -32,7 +32,7 @@ object AvroSchemaEnrichedTrip extends App {
   val enrichedTripSchema = new Schema.Parser().parse(enrichedTrip)
 
   val srClient = new CachedSchemaRegistryClient("http://localhost:8081", 1)
-  srClient.register("bdsf2001_adriest_enriched_trip-value", enrichedTripSchema)
+  srClient.register("$$$$$$$_enriched_trip-value", enrichedTripSchema)
 }
 
 
