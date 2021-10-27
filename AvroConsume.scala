@@ -21,7 +21,7 @@ object AvroConsume extends App {
   consumerProperties.setProperty(AUTO_OFFSET_RESET_CONFIG, "earliest")
 
   val consumer = new KafkaConsumer[String, GenericRecord](consumerProperties)
-  consumer.subscribe(List("bdsf2001_adriest_enrichedtrip").asJava)
+  consumer.subscribe(List("xxxxxxxx").asJava)
 
   println("| Key | Message | Partition | Offset |")
   while (true) {
