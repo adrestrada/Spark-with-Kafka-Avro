@@ -56,7 +56,7 @@ object Main extends App with Base {
   trip.foreachRDD(microRDD => businessLogic(microRDD))
 
   ssc.start()
-  ssc.awaitTerminationOrTimeout(5)
+  ssc.awaitTermination()
   ssc.stop(stopSparkContext = true, stopGracefully = true)
 
   def businessLogic(microRDD: RDD[String]): Unit = {
